@@ -20,4 +20,5 @@ enum class Genre
     Thriller,
     War,
     Western,
+    None,
 };

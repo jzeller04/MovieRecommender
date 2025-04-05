@@ -1,0 +1,46 @@
+#include "movie.hpp"
+
+
+Movie::Movie()
+{
+    this->m_id = -1;
+    this->m_movieTitle = "";
+    // this->m_genres = Genre::None;
+    // this->m_tags = tags;
+}
+Movie::Movie(unsigned int id, const std::string &title, const std::vector<Genre> &movieGenre/*, const std::vector<std::string> &tags*/)
+{
+    this->m_id = id;
+    this->m_movieTitle = title;
+    this->m_genres = movieGenre;
+    // this->m_tags = tags;
+}
+unsigned int Movie::getID()
+{
+    return m_id;
+}
+
+std::vector<std::string> Movie::getTags()
+{
+    return m_tags;
+}
+
+std::string Movie::getTitle()
+{
+    return m_movieTitle;
+}
+
+std::vector<Genre> Movie::getGenre()
+{
+    return m_genres;
+}
+
+
+void Movie::debugPrint()
+{
+    std::cerr << "Movie info: \n";
+    std::cerr << m_id << std::endl;
+    std::cerr << m_movieTitle << std::endl;
+    for(auto i : m_genres)
+        std::cerr << genreToString(i) << std::endl;
+}
