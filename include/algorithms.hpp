@@ -4,4 +4,4 @@
 #include "enum/genre.hpp"
 #include "movie.hpp"
 
-float jaccardSimilarity(Movie a, Movie b);
+float jaccardSimilarity(const std::unordered_set<Genre> &a, const std::unordered_set<Genre> &b);

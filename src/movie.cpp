@@ -8,7 +8,7 @@ Movie::Movie()
     // this->m_genres = Genre::None;
     // this->m_tags = tags;
 }
-Movie::Movie(unsigned int id, const std::string &title, const std::vector<Genre> &movieGenre/*, const std::vector<std::string> &tags*/)
+Movie::Movie(unsigned int id, const std::string &title, const std::unordered_set<Genre> &movieGenre/*, const std::vector<std::string> &tags*/)
 {
     this->m_id = id;
     this->m_movieTitle = title;
@@ -30,7 +30,7 @@ std::string Movie::getTitle()
     return m_movieTitle;
 }
 
-std::vector<Genre> Movie::getGenre()
+std::unordered_set<Genre> Movie::getGenres()
 {
     return m_genres;
 }

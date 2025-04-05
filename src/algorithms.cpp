@@ -1,25 +1,26 @@
 #include "algorithms.hpp"
 
-
-float jaccardSimilarity(Movie a, Movie b) // the genres in the movies are a vector on purpose, because "brute forcing" is faster with smaller input samples. Movies rearely have more than 3 or 4 genres, so by using an O(n^2), its actually faster.
+// jaccard coefficient is the intersection of two sets divided by the union
+float jaccardSimilarity(const std::unordered_set<Genre> &a, const std::unordered_set<Genre> &b) // the genres in the movies use hash sets in order to make this algorithm run at O(n), instead of O(n^2)
 {
     int intersection = 0;
-    int unionSize = a.getGenre().size() + b.getGenre().size();
+    int unionSize = a.size() + b.size();
 
 
     // find size of the intersection:
 
-    for(auto i : a.getGenre())
+    if(a.empty() || b.empty()) // if one set is empty, no need to run the O(n) operation
+        return 0;
+
+    for(const auto &genre : a)
     {
-        for(auto j : b.getGenre())
+        if(b.count(genre))
         {
-            if(i == j)
-            {
-                intersection++;
-                unionSize--;
-            }
+            intersection++;
+            unionSize--;
         }
     }
+
     return static_cast<float>(intersection)/unionSize;
 
 }

@@ -4,13 +4,16 @@
 
 int main()
 {
-    std::vector<Genre> genres;
-    genres.push_back(Genre::Children_s);
-    genres.push_back(Genre::Adventure);
+    std::unordered_set<Genre> genres;
+    genres.insert(Genre::Action);
+    genres.insert(Genre::Adventure);
 
-    std::vector<Genre> genres2;
-    genres2.push_back(Genre::Adventure);
-    genres2.push_back(Genre::Animation);
+
+    std::unordered_set<Genre> genres2;
+    genres2.insert(Genre::Action);
+    genres2.insert(Genre::Horror);
+
+    
     std::string ex = "Example";
     Movie movie1(1, "Title1", genres);
     Movie movie2(2, "Example2", genres2);
@@ -18,6 +21,6 @@ int main()
     movie1.debugPrint();
     movie2.debugPrint();
 
-    std::cerr << jaccardSimilarity(movie1, movie2);
+    std::cerr << jaccardSimilarity(movie1.getGenres(), movie2.getGenres()); // this works!
 
 }
