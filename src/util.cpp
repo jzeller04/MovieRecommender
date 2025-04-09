@@ -27,4 +27,37 @@ std::string genreToString(Genre genre)
         default: return "Unknown";
     }
 }
+Genre intToGenre(int i)
+{
+    switch(i)
+    {
+        case 1: return Genre::Action;
+        case 2: return Genre::Adventure;
+        case 3: return Genre::Animation;
+        case 4: return Genre::Children_s;
+        case 5: return Genre::Comedy;
+        case 6: return Genre::Crime;
+        case 7: return Genre::Documentary;
+        case 8: return Genre::Drama;
+        case 9: return Genre::Fantasy;
+        case 10: return Genre::Film_Noir;
+        case 11: return Genre::Horror;
+        case 12: return Genre::Musical;
+        case 13: return Genre::Mystery;
+        case 14: return Genre::Romance;
+        case 15: return Genre::Sci_Fi;
+        case 16: return Genre::Thriller;
+        case 17: return Genre::War;
+        case 18: return Genre::Western;
+        default: return Genre::None;
+    }
+}
 
+bool debugFindGenre(Genre a, const std::unordered_set<Genre> &genreSet)
+{
+    for(auto i : genreSet)
+    {
+        if(a == i) return true;
+    }
+    return false;
+}

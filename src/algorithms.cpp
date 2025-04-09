@@ -24,3 +24,18 @@ float jaccardSimilarity(const std::unordered_set<Genre> &a, const std::unordered
     return static_cast<float>(intersection)/unionSize;
 
 }
+
+std::vector<Movie> recommendMovie(const std::vector<Movie> &movieDatabase, const std::unordered_set<Genre> &userPrefs)
+{
+    std::vector<Movie> returnMovies;
+
+    for(auto i : movieDatabase /*add rating shit later?*/)
+    {
+        if(jaccardSimilarity(i.getGenres(), userPrefs) > 0.45) // tweak this number
+        {
+            returnMovies.push_back(i);
+        }
+    }
+    
+    return returnMovies;
+}

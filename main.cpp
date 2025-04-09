@@ -1,26 +1,51 @@
 #include "include/movie.hpp"
 #include "include/algorithms.hpp"
 #include <iostream>
-
+#include <random>
+#include <ctime>
+#include <string>
 int main()
 {
-    std::unordered_set<Genre> genres;
-    genres.insert(Genre::Action);
-    genres.insert(Genre::Adventure);
 
+    // NOTE for Douglas and Parth, everything in this main function is just for testing. But look at the functions I have created to guide how you do user input/file input. User preferences should be stored in a hash set. Movies for now can be in a vector.
 
-    std::unordered_set<Genre> genres2;
-    genres2.insert(Genre::Action);
-    genres2.insert(Genre::Horror);
+    srand(time(NULL));
+    std::string ex = "Movie ";
+    std::vector<Movie> actionMovies;
 
-    
-    std::string ex = "Example";
-    Movie movie1(1, "Title1", genres);
-    Movie movie2(2, "Example2", genres2);
+    for(int i = 0; i < 500; i++)
+    {
+        std::unordered_set<Genre> copyGenres;
+        for(int j = 0; j < 5; j++)
+        {
+            int random = rand() % 18;
+            copyGenres.insert(intToGenre(random));
+        }
+        std::string ex2 = "Movie " + std::to_string(i);
+        actionMovies.push_back(Movie(i, ex2, copyGenres));
+    }
 
-    movie1.debugPrint();
-    movie2.debugPrint();
+    std::unordered_set<Genre> userGenres;
+    for(int j = 0; j < 10; j++)
+    {
+        int random = rand() % 18;
+        userGenres.insert(intToGenre(random));
+    }
 
-    std::cerr << jaccardSimilarity(movie1.getGenres(), movie2.getGenres()); // this works!
+    std::cout << "User prefs: \n";
+    for(Genre i : userGenres)
+    {
+        std::string mark = (debugFindGenre(static_cast<Genre>(i), userGenres) ? "*" : "");
+        std::cout << genreToString(i) << mark << std::endl;
+    }
+
+    std::vector<Movie> recMovies;
+    recMovies = recommendMovie(actionMovies, userGenres);
+    std::cout << "Recommended Movies: " << recMovies.size() << "/" << actionMovies.size() << std::endl;
+    for(auto i : recMovies)
+    {
+        i.debugPrintStar(userGenres);
+    }
+
 
 }

@@ -22,5 +22,8 @@ public:
     std::string getTitle();
     std::unordered_set<Genre> getGenres();
 
+
+
     void debugPrint();
+    void debugPrintStar(std::unordered_set<Genre> userPrefs);
 };
