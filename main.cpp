@@ -47,5 +47,7 @@ int main()
         i.debugPrintStar(userGenres);
     }
 
+    std::cout << "NOTE: All movies right now are just randomly generated test movies." << std::endl;
+
 
 }
