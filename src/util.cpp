@@ -53,6 +53,28 @@ Genre intToGenre(int i)
     }
 }
 
+Genre stringToGenre(std::string genre) {
+    if (genre == "Action") return Genre::Action;
+    if (genre == "Adventure") return Genre::Adventure;
+    if (genre == "Animation") return Genre::Animation;
+    if (genre == "Children's") return Genre::Children_s;
+    if (genre == "Comedy") return Genre::Comedy;
+    if (genre == "Crime") return Genre::Crime;
+    if (genre == "Documentary") return Genre::Documentary;
+    if (genre == "Drama") return Genre::Drama;
+    if (genre == "Fantasy") return Genre::Fantasy;
+    if (genre == "Film-Noir") return Genre::Film_Noir;
+    if (genre == "Horror") return Genre::Horror;
+    if (genre == "Musical") return Genre::Musical;
+    if (genre == "Mystery") return Genre::Mystery;
+    if (genre == "Romance") return Genre::Romance;
+    if (genre == "Sci-Fi") return Genre::Sci_Fi;
+    if (genre == "Thriller") return Genre::Thriller;
+    if (genre == "War") return Genre::War;
+    if (genre == "Western") return Genre::Western;
+    return Genre::None;
+}
+
 bool debugFindGenre(Genre a, const std::unordered_set<Genre> &genreSet)
 {
     for(auto i : genreSet)

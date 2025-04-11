@@ -35,6 +35,14 @@ std::unordered_set<Genre> Movie::getGenres()
     return m_genres;
 }
 
+bool Movie::operator<(const Movie& other) const {
+    return m_id < other.m_id;
+}
+
+bool Movie::operator==(const Movie& other) const {
+return m_movieTitle == other.m_movieTitle && m_id == other.m_id && m_genres == other.m_genres;
+}
+
 
 void Movie::debugPrint()
 {

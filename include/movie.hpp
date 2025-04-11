@@ -22,7 +22,9 @@ public:
     std::string getTitle();
     std::unordered_set<Genre> getGenres();
 
+    bool operator<(const Movie& other) const;
 
+    bool operator==(const Movie& other) const;
 
     void debugPrint();
     void debugPrintStar(std::unordered_set<Genre> userPrefs);
