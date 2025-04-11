@@ -1,10 +1,12 @@
 #include "include/movie.hpp"
-#include "algorithms.hpp"
+#include "include/algorithms.hpp"
+#include "include/movieDatabase.hpp"
+#include "dataParser.cpp"
 #include <iostream>
 #include <random>
 #include <ctime>
 #include <string>
-#include "movieDatabase.hpp"
+
 
 
 int main(){
@@ -14,7 +16,7 @@ int main(){
 
     // generating random test dataset (basically a test file) of 1000 movies
 
-    Movie dataSet[1000];
+    /*Movie dataSet[1000];
     for(int i = 0; i < 1000; i++)
     {
         std::unordered_set<Genre> copyGenres;
@@ -32,7 +34,10 @@ int main(){
     for(int i = 0; i < 1000; i++)
     {
         storage.store(&dataSet[i]);
-    }
+    }*/
+
+    std::string filename = "assets\\ml-latest-small\\movies.csv";
+    auto storage = readMoviesFromCSV(filename);
 
     std::unordered_set<Genre> userGenres; //store user preferences
     

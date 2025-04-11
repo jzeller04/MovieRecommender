@@ -64,7 +64,7 @@ MovieStorage readMoviesFromCSV(const std::string& filename) {
     return movieDB;
 }
 
-int main() {
+/*int main() {
     std::string filename = "assets\\ml-latest-small\\movies.csv";
     auto movieDB = readMoviesFromCSV(filename);
 
@@ -85,4 +85,4 @@ int main() {
     }
 
     return 0;
-}
+}*/

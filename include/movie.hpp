@@ -23,9 +23,10 @@ public:
     std::string getTitle() const;
     std::unordered_set<Genre> getGenres() const;
 
-    bool operator<(const Movie& other) const {
-        return m_id < other.m_id; // this is used so that std::set can be used with movies
-    }
+    bool operator<(const Movie& other) const;
+
+    bool operator==(const Movie& other) const;
+
 
     void debugPrint();
     void debugPrintStar(std::unordered_set<Genre> userPrefs);
