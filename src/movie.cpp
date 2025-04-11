@@ -15,22 +15,22 @@ Movie::Movie(unsigned int id, const std::string &title, const std::unordered_set
     this->m_genres = movieGenre;
     // this->m_tags = tags;
 }
-unsigned int Movie::getID()
+unsigned int Movie::getID() const
 {
     return m_id;
 }
 
-std::vector<std::string> Movie::getTags()
+std::vector<std::string> Movie::getTags() const
 {
     return m_tags;
 }
 
-std::string Movie::getTitle()
+std::string Movie::getTitle() const
 {
     return m_movieTitle;
 }
 
-std::unordered_set<Genre> Movie::getGenres()
+std::unordered_set<Genre> Movie::getGenres() const
 {
     return m_genres;
 }
@@ -55,10 +55,11 @@ void Movie::debugPrint()
 
 void Movie::debugPrintStar(std::unordered_set<Genre> userPrefs)
 {
+    std::cerr << "===============\n";
     std::cerr << "Movie info: \n";
     //std::cerr << m_id << std::endl;
     std::cerr << m_movieTitle << std::endl;
     for(auto i : m_genres)
         std::cerr << genreToString(i) << (debugFindGenre(i, userPrefs) ? "*" : "") << std::endl;
-    std::cout << "===============\n";
+    std::cerr << "===============\n";
 }

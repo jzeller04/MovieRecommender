@@ -1,5 +1,6 @@
 #include "algorithms.hpp"
 
+
 // jaccard coefficient is the intersection of two sets divided by the union
 float jaccardSimilarity(const std::unordered_set<Genre> &a, const std::unordered_set<Genre> &b) // the genres in the movies use hash sets in order to make this algorithm run at O(n), instead of O(n^2)
 {
@@ -24,18 +25,32 @@ float jaccardSimilarity(const std::unordered_set<Genre> &a, const std::unordered
     return static_cast<float>(intersection)/unionSize;
 
 }
-
-std::vector<Movie> recommendMovie(const std::vector<Movie> &movieDatabase, const std::unordered_set<Genre> &userPrefs)
+// recommends movies with MovieStorage input, and userPrefs
+std::set<Movie> recommendMovie(const MovieStorage &movieDatabase, const std::unordered_set<Genre> &userPrefs) // side note, jaccard similarity only works well if the sets have a similar length. If the user only has one preference, it thinks NO movies are similar (which is true, but still)
 {
-    std::vector<Movie> returnMovies;
+    std::set<Movie> returnMovies;
 
-    for(auto i : movieDatabase /*add rating shit later?*/)
+    
+
+    for(auto genreList : userPrefs) // go thru each set of movies that is the same genre as user prefs
     {
-        if(jaccardSimilarity(i.getGenres(), userPrefs) > 0.45) // tweak this number
+        for(auto *movieSet : movieDatabase.getSet(genreList))
         {
-            returnMovies.push_back(i);
-        }
+            if(userPrefs.size() < 3)
+            {
+                if(jaccardSimilarity(movieSet->getGenres(), userPrefs) > 0.3) // tweak this number
+                {
+                    returnMovies.insert(*movieSet);
+                } 
+            }
+            else if(jaccardSimilarity(movieSet->getGenres(), userPrefs) > 0.4) // tweak this number
+            {
+                returnMovies.insert(*movieSet);
+            }
+        } 
     }
+
     
     return returnMovies;
 }
+
