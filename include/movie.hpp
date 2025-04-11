@@ -24,7 +24,7 @@ public:
     std::unordered_set<Genre> getGenres() const;
 
     bool operator<(const Movie& other) const {
-        return m_id < other.m_id; // Or use a more complex comparison logic here
+        return m_id < other.m_id; // this is used so that std::set can be used with movies
     }
 
     void debugPrint();

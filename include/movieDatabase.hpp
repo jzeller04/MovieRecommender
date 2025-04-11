@@ -18,5 +18,5 @@ public:
     MovieStorage();
     ~MovieStorage();
     void store(Movie* movie);
-    std::unordered_set<Movie*>& getSet(Genre genre);
+    const std::unordered_set<Movie*>& getSet(Genre genre) const;
 };
