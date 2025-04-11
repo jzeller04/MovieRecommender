@@ -24,14 +24,14 @@ float jaccardSimilarity(const std::unordered_set<Genre> &a, const std::unordered
     return static_cast<float>(intersection)/unionSize;
 
 }
-
+// have this take in a MovieStorage instead
 std::set<Movie> recommendMovie(std::unordered_set<Movie*> &movieDatabase, const std::unordered_set<Genre> &userPrefs)
 {
     std::set<Movie> returnMovies;
 
-    for(auto *i : movieDatabase /*add rating shit later?*/)
+    for(auto *i : movieDatabase)
     {
-        if(jaccardSimilarity(i->getGenres(), userPrefs) > 0.45) // tweak this number
+        if(jaccardSimilarity(i->getGenres(), userPrefs) > 0.4) // tweak this number
         {
             returnMovies.insert(*i);
         }

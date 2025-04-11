@@ -47,10 +47,11 @@ void Movie::debugPrint()
 
 void Movie::debugPrintStar(std::unordered_set<Genre> userPrefs)
 {
+    std::cerr << "===============\n";
     std::cerr << "Movie info: \n";
     //std::cerr << m_id << std::endl;
     std::cerr << m_movieTitle << std::endl;
     for(auto i : m_genres)
         std::cerr << genreToString(i) << (debugFindGenre(i, userPrefs) ? "*" : "") << std::endl;
-    std::cout << "===============\n";
+    std::cerr << "===============\n";
 }
