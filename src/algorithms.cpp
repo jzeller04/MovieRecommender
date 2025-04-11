@@ -25,17 +25,18 @@ float jaccardSimilarity(const std::unordered_set<Genre> &a, const std::unordered
 
 }
 
-std::vector<Movie> recommendMovie(const std::vector<Movie> &movieDatabase, const std::unordered_set<Genre> &userPrefs)
+std::set<Movie> recommendMovie(std::unordered_set<Movie*> &movieDatabase, const std::unordered_set<Genre> &userPrefs)
 {
-    std::vector<Movie> returnMovies;
+    std::set<Movie> returnMovies;
 
-    for(auto i : movieDatabase /*add rating shit later?*/)
+    for(auto *i : movieDatabase /*add rating shit later?*/)
     {
-        if(jaccardSimilarity(i.getGenres(), userPrefs) > 0.45) // tweak this number
+        if(jaccardSimilarity(i->getGenres(), userPrefs) > 0.45) // tweak this number
         {
-            returnMovies.push_back(i);
+            returnMovies.insert(*i);
         }
     }
     
     return returnMovies;
 }
+

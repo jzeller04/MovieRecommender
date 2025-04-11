@@ -15,22 +15,22 @@ Movie::Movie(unsigned int id, const std::string &title, const std::unordered_set
     this->m_genres = movieGenre;
     // this->m_tags = tags;
 }
-unsigned int Movie::getID()
+unsigned int Movie::getID() const
 {
     return m_id;
 }
 
-std::vector<std::string> Movie::getTags()
+std::vector<std::string> Movie::getTags() const
 {
     return m_tags;
 }
 
-std::string Movie::getTitle()
+std::string Movie::getTitle() const
 {
     return m_movieTitle;
 }
 
-std::unordered_set<Genre> Movie::getGenres()
+std::unordered_set<Genre> Movie::getGenres() const
 {
     return m_genres;
 }
