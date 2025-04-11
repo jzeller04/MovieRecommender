@@ -2,7 +2,6 @@
 
 MovieStorage::MovieStorage()
 {
-    // Debugging: Output to make sure constructor runs
     std::cout << "Initializing genres...\n";
 
     // Manually initialize each genre with an empty set
@@ -10,8 +9,7 @@ MovieStorage::MovieStorage()
         Genre g = intToGenre(genre);
         m_Movies[g] = std::unordered_set<Movie*>();
 
-        // Debugging: Ensure each genre is being initialized
-        std::cout << "Initialized genre: " << genreToString(g) << "\n"; // Prints genre index
+        std::cout << "Initialized genre: " << genreToString(g) << "\n";
     }
 }
 

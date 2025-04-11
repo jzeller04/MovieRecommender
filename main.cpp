@@ -39,7 +39,7 @@ int main(){
     //main menu to prompt users for input
     while(userinput != -1){
         std::cout << "Enter your movie preferences!(-1 to quit):" << std::endl;
-        std::cout << "1:Action\n2:Adventure\n3:Animation\n4:Childrens'\n5:Comedy\n6:Crime\n7:Documentary\n8:Drama\n9:Fantasy\n10:Film Noir\n11:Horro\n12:Musical\n13:Mystery\n14:Romance\n15:Sci-Fi\n16:Thriller\n17:War\n18:Western\n";
+        std::cout << "1:Action\n2:Adventure\n3:Animation\n4:Childrens'\n5:Comedy\n6:Crime\n7:Documentary\n8:Drama\n9:Fantasy\n10:Film Noir\n11:Horror\n12:Musical\n13:Mystery\n14:Romance\n15:Sci-Fi\n16:Thriller\n17:War\n18:Western\n";
         std::cout << "Input: ";
         std::cin >> userinput;
         if(userinput > 0 && userinput < 19)
