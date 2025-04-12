@@ -14,32 +14,11 @@ int main(){
     srand(time(NULL));
     int userinput = 0;
 
-    // generating random test dataset (basically a test file) of 1000 movies
-
-    /*Movie dataSet[1000];
-    for(int i = 0; i < 1000; i++)
-    {
-        std::unordered_set<Genre> copyGenres;
-        for(int j = 0; j < 5; j++)
-        {
-            int random = rand() % 17 + 1;
-            copyGenres.insert(intToGenre(random));
-        }
-        std::string title = "Movie " + std::to_string(i);
-        dataSet[i] = Movie(i, title, copyGenres);
-    }
-
-    // storing sample into movie storage class
-    MovieStorage storage;
-    for(int i = 0; i < 1000; i++)
-    {
-        storage.store(&dataSet[i]);
-    }*/
-
     std::vector<Movie> movieCentralStorage;
+    movieCentralStorage.reserve(10000);
 
     std::string filename = "assets\\ml-latest-small\\movies.csv";
-    MovieStorage storage = readMoviesFromCSV(filename);
+    MovieStorage storage = readMoviesFromCSV(filename, movieCentralStorage);
 
     std::unordered_set<Genre> userGenres; //store user preferences
     
@@ -65,18 +44,18 @@ int main(){
     std::set<Movie> recMovies;
     recMovies = recommendMovie(storage, userGenres);
 
+    std::cout << "Here's what we recommend you to watch!\n";
+
     if(recMovies.size() != 0){
 
         for(auto i : recMovies)
         {
-            i.debugPrintStar(userGenres);
+            i.printInfo();
         }
         std::cout << "Recommended Movies: " << recMovies.size() << "/" << "9743\n";
     }
     else{
         std::cout << "No movies found for those genres!" << std::endl;
     }
-
-    std::cout << "NOTE: All movies right now are just randomly generated test movies." << std::endl;
 
 }

@@ -13,7 +13,7 @@ std::vector<std::string> split(const std::string& str, char delimiter) {
 }
 
 // Function to read movies from CSV
-MovieStorage readMoviesFromCSV(const std::string& filename) {
+MovieStorage readMoviesFromCSV(const std::string& filename, std::vector<Movie> &centralDB) {
     MovieStorage movieDB;
     
     std::ifstream file(filename);
@@ -26,7 +26,7 @@ MovieStorage readMoviesFromCSV(const std::string& filename) {
         std::cerr << "Error opening file" << std::endl;
         return movieDB;
     }
-
+    int i = 0;
     while (std::getline(file, line)) {
         std::stringstream ss(line);
         std::string movieId, title, genreStr;
@@ -47,8 +47,10 @@ MovieStorage readMoviesFromCSV(const std::string& filename) {
         }
 
         // Create new movie object and store it
-        Movie* movie = new Movie(std::stoi(movieId), title, movieGenres);
-        movieDB.store(movie);
+        Movie newMovie(std::stoi(movieId), title, movieGenres);
+        centralDB.emplace_back(newMovie);
+        movieDB.store(&centralDB[i]);
+        i++;
     }
 
     file.close();

@@ -13,4 +13,4 @@
 
 std::vector<std::string> split(const std::string& str, char delimiter);
 
-MovieStorage readMoviesFromCSV(const std::string& filename);
+MovieStorage readMoviesFromCSV(const std::string& filename, std::vector<Movie> &centralDB);

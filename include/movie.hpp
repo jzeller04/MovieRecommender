@@ -30,6 +30,7 @@ public:
 
     void debugPrint();
     void debugPrintStar(std::unordered_set<Genre> userPrefs);
+    void printInfo();
 };
 
   // Required for std::hash

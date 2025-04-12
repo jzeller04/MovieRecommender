@@ -38,12 +38,12 @@ std::set<Movie> recommendMovie(const MovieStorage &movieDatabase, const std::uno
         {
             if(userPrefs.size() < 3)
             {
-                if(jaccardSimilarity(movieSet->getGenres(), userPrefs) > 0.3) // tweak this number
+                if(jaccardSimilarity(movieSet->getGenres(), userPrefs) > 0.5) // tweak this number
                 {
                     returnMovies.insert(*movieSet);
                 } 
             }
-            else if(jaccardSimilarity(movieSet->getGenres(), userPrefs) > 0.4) // tweak this number
+            else if(jaccardSimilarity(movieSet->getGenres(), userPrefs) > 0.6) // tweak this number
             {
                 returnMovies.insert(*movieSet);
             }
