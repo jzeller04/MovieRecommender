@@ -1,10 +1,10 @@
-#include "include/movieDatabase.hpp"
+#include "movieDatabase.hpp"
 
 MovieStorage::MovieStorage()
 {
     std::cout << "Initializing genres...\n";
 
-    // Manually initialize each genre with an empty set
+    // Manually initialize each genre with an empty set 
     for (int genre = static_cast<int>(Genre::Action); genre <= static_cast<int>(Genre::Western); ++genre) {
         Genre g = intToGenre(genre);
         m_Movies[g] = std::unordered_set<Movie*>();

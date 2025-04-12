@@ -1,7 +1,7 @@
 #include "include/movie.hpp"
 #include "include/algorithms.hpp"
 #include "include/movieDatabase.hpp"
-#include "dataParser.cpp"
+#include "include/dataParser.hpp"
 #include <iostream>
 #include <random>
 #include <ctime>
@@ -36,8 +36,10 @@ int main(){
         storage.store(&dataSet[i]);
     }*/
 
+    std::vector<Movie> movieCentralStorage;
+
     std::string filename = "assets\\ml-latest-small\\movies.csv";
-    auto storage = readMoviesFromCSV(filename);
+    MovieStorage storage = readMoviesFromCSV(filename);
 
     std::unordered_set<Genre> userGenres; //store user preferences
     
@@ -69,7 +71,7 @@ int main(){
         {
             i.debugPrintStar(userGenres);
         }
-        std::cout << "Recommended Movies: " << recMovies.size() << "/" << "1000\n";
+        std::cout << "Recommended Movies: " << recMovies.size() << "/" << "9743\n";
     }
     else{
         std::cout << "No movies found for those genres!" << std::endl;

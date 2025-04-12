@@ -1,13 +1,4 @@
-#include "include/movie.hpp"
-#include "include/util.hpp"
-#include "include/MovieDatabase.hpp"
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <vector>
-#include <string>
-#include <unordered_set>
-#include <unordered_map>
+#include "dataParser.hpp"
 
 
 // Function to split a string by a delimiter

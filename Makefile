@@ -8,7 +8,7 @@ SRCDIR = src
 INCDIR = include
 
 # Files
-SRC = main.cpp src/algorithms.cpp src/movie.cpp src/util.cpp src/movieDatabase.cpp
+SRC = main.cpp src/algorithms.cpp src/movie.cpp src/util.cpp src/movieDatabase.cpp src/dataParser.cpp
 OBJ = $(SRC:.cpp=.o)
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 

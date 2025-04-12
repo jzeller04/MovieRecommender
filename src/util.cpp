@@ -1,4 +1,4 @@
-#include "include/util.hpp"
+#include "util.hpp"
 
 
 std::string genreToString(Genre genre)
